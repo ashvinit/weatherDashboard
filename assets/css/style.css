@@ -1,6 +1,6 @@
 .jumbotron {
     background-color: #606060;
-    color: white;
+    color: white; 
     padding: 0;
     justify-content: center;
 }
@@ -8,3 +8,20 @@
 h1 {
     text-align: center;
 }
+
+#searchInput {
+    width: 200px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+#searchBtn {
+    height: 38px;
+    width: 38px;
+}
+
+.searchCities {
+    margin-left: 2%;
+}
+
+
