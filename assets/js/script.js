@@ -12,17 +12,16 @@ $("#searchBtn").on("click", function (event) {
         method: "GET"
     }).then(displayWeather);
 
-    console.log(cityName);
-
 });
 
 //function to show weather forecast of searched city
 function displayWeather(weatherData) {
- console.log(weather);
 
- var city = $("<h3>");
+ var city = $("<h2>");
 
  city.text(weatherData.name);
+
+ console.log(weatherData.name);
 
  console.log(name);
  
