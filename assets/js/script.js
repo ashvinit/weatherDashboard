@@ -17,6 +17,14 @@ $("#searchBtn").on("click", function (event) {
 });
 
 //function to show weather forecast of searched city
-function displayWeather(weather) {
+function displayWeather(weatherData) {
  console.log(weather);
+
+ var city = $("<h3>");
+
+ city.text(weatherData.name);
+
+ console.log(name);
+ 
+ $("#dashboard").append(city);
 }
