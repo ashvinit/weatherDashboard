@@ -10,20 +10,13 @@ $("#searchBtn").on("click", function (event) {
     $.ajax({
         url: queryURL,
         method: "GET"
-    }).then(displayWeather);
+    }).then(function (displayWeather) {
+
+        //function to show weather forecast of searched city
+        var card = $("<div>").addClass("card");
+        var 
+
+
+    });
 
 });
-
-//function to show weather forecast of searched city
-function displayWeather(weatherData) {
-
- var city = $("<h2>");
-
- city.text(weatherData.name);
-
- console.log(weatherData.name);
-
- console.log(name);
- 
- $("#dashboard").append(city);
-}
