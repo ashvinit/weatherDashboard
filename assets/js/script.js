@@ -5,57 +5,67 @@ console.log(recentCity);
 $("#searchBtn").on("click", function (event) {
     event.preventDefault();
 
-    var cityName = $("#searchInput").val().trim();
+    var city = $("#searchInput").val().trim();
 
-    //query for searching city using openweather map
-    var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=a4fafd35cdf4a780c554fb1a0788f97f";
+    function searchCity (cityName) {
 
-    $.ajax({
-        url: queryURL,
-        method: "GET",
-        dataType: "json"
-    }).then(function (data) {
-        console.log(data);
+        //query for searching city using openweather map
+        var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=a4fafd35cdf4a780c554fb1a0788f97f";
 
-        //empty out the dashboard when a new search is made
-        $("#dashboard").empty();
+        $.ajax({
+            url: queryURL,
+            method: "GET",
+            dataType: "json"
+        }).then(function (data) {
+            console.log(data);
 
-        //history link for search
-        function saveCity() {
+            //empty out the dashboard when a new search is made
+            $("#dashboard").empty();
 
-            recentCity.push(cityName);
+            //history link for search
+            function saveCity() {
 
-            localStorage.setItem("recentCity", JSON.stringify(recentCity));
-            localStorage.setItem("cityName", cityName);
+                recentCity.unshift(cityName);
 
-            for (i=0; i <10; i++) {
-                var listCities = $('<a target="#" href="" class="list-group-item list-group-item-action">');
-            }
+                localStorage.setItem("recentCity", JSON.stringify(recentCity));
+                localStorage.setItem("cityName", cityName);
 
-        };
+                $(".list-group").empty();
 
-        saveCity();
-        
+                for (i=0; i < 4; i++) {
+                    var listCities = $('<a target="#" href="" class="list-group-item list-group-item-action">');
+                    listCities.text(recentCity[i]);
+                    $(".list-group").append(listCities);
+                }
 
-        //convert Kelvin to degrees F
-        var convertK = (((parseInt(data.main.temp)) - 273.15) * (9/5) + 32);
+            };
 
-        //created card to hold weather information
-        var card = $("<div>").addClass("card");
-        var cardBody =$("<div>").addClass("card-body");
-        var title = $("<h2>").addClass("card-title").text(data.name);
-        var temp = $("<p>").addClass("card-text").text("Temperature: " + convertK.toFixed(2) + "℉");
-        var humidity = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + "%");
-        var windSpeed = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + "MPH");
+            saveCity();
+            
 
-        //append text to dashboard in html
-        cardBody.append(title, temp, humidity, windSpeed);
-        card.append(cardBody);
-        $("#dashboard").append(card);
+            //convert Kelvin to degrees F
+            var convertK = (((parseInt(data.main.temp)) - 273.15) * (9/5) + 32);
 
-    });
+            //created card to hold weather information
+            var card = $("<div>").addClass("card");
+            var cardBody =$("<div>").addClass("card-body");
+            var title = $("<h2>").addClass("card-title").text(data.name);
+            var temp = $("<p>").addClass("card-text").text("Temperature: " + convertK.toFixed(2) + "℉");
+            var humidity = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + "%");
+            var windSpeed = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + "MPH");
+
+            //append text to dashboard in html
+            cardBody.append(title, temp, humidity, windSpeed);
+            card.append(cardBody);
+            $("#dashboard").append(card);
+
+        });
+
+    }
+    searchCity(city);
 
 });
+
 
 //function to get the forcast
     //use a forloop to loop over all forcasts
