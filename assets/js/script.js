@@ -9,14 +9,31 @@ $("#searchBtn").on("click", function (event) {
 
     $.ajax({
         url: queryURL,
-        method: "GET"
+        method: "GET",
+        dataType: "json"
     }).then(function (data) {
         console.log(data);
 
+        //empty out the dashboard when a new search is made
         $("#dashboard").empty();
 
+        //history link for search
+        function saveCity() {
+            var recentCity = []
+
+            recentCity.push(searchedCities);
+
+            localStorage.setItem(JSON.stringify(cityName));
+
+            for (i=0; i <10; i++) {
+                var listCities = $('<a target="#" href="" class="list-group-item list-group-item-action">');
+            }
+
+        };
+        
+
         //convert Kelvin to degrees F
-        var convertK = (((parseInt(data.main.temp)) - 273.15) * (5/9) + 32);
+        var convertK = (((parseInt(data.main.temp)) - 273.15) * (9/5) + 32);
 
         //created card to hold weather information
         var card = $("<div>").addClass("card");
@@ -31,8 +48,11 @@ $("#searchBtn").on("click", function (event) {
         card.append(cardBody);
         $("#dashboard").append(card);
 
-
-
     });
 
 });
+
+//function to get the forcast
+    //use a forloop to loop over all forcasts
+
+//function to get UV index
