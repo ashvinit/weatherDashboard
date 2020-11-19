@@ -1,5 +1,6 @@
-var recentCity = [];
-
+var recentCity = JSON.parse(localStorage.getItem("recentCity")) || [];
+var lastSearched = localStorage.getItem("cityName") || "";
+console.log(recentCity);
 //add event listener on button to retrieve city name
 $("#searchBtn").on("click", function (event) {
     event.preventDefault();
