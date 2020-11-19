@@ -1,3 +1,5 @@
+var recentCity = [];
+
 //add event listener on button to retrieve city name
 $("#searchBtn").on("click", function (event) {
     event.preventDefault();
@@ -19,17 +21,19 @@ $("#searchBtn").on("click", function (event) {
 
         //history link for search
         function saveCity() {
-            var recentCity = []
 
-            recentCity.push(searchedCities);
+            recentCity.push(cityName);
 
-            localStorage.setItem(JSON.stringify(cityName));
+            localStorage.setItem("recentCity", JSON.stringify(recentCity));
+            localStorage.setItem("cityName", cityName);
 
             for (i=0; i <10; i++) {
                 var listCities = $('<a target="#" href="" class="list-group-item list-group-item-action">');
             }
 
         };
+
+        saveCity();
         
 
         //convert Kelvin to degrees F
