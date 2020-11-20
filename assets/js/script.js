@@ -94,9 +94,51 @@ function getForecast() {
         method: "GET"
     }).then(function (data) {
         console.log(data);
+        
+        //function to loop through all the forecasts
+        function fiveDayForecast() {
+        //use a forloop to loop over all forecasts
+        for (i = 0; i <= 32; i+=8) {
+            
+            var card2 = $("<div>").addClass("card");
+            var cardBody2 =$("<div>").addClass("card-body");
+            //retrieve date and change format of the date
+            var date = data.list[i].dt_txt.substring(0, 10).split('-');
+            var newDate = $("<h4>").addClass("card-title").text(date[1] + '/' + date[2] + '/' + date[0]);
+            //convert K to F
+            var convertForecastK = (((parseInt(data.list[i].main.temp)) - 273.15) * (9/5) + 32);
+            var temp2 = $("<p>").addClass("card-text").text("Temperature: " + convertForecastK.toFixed(2) + "℉");
+            var humidity2 = $("<p>").addClass("card-text").text("Humidity: " + data.list[i].main.humidity + "%");
+
+            cardBody2.append(newDate, temp2, humidity2);
+            card2.append(cardBody2);
+            $(".card-holder").append(card2);
+
+        }
+
+    }
+
+
+    //run fivedayForecast
+    fiveDayForecast();
+
+
+
+
+
+
+
+
+
 
     })
 }
-    //use a forloop to loop over all forcasts
+
+    
+
+    
+
+    
+    
 
 //function to get UV index
