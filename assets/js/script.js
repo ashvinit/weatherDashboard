@@ -1,15 +1,18 @@
+//if the page is reloaded, the cities in local storage should be retrieved
 var recentCity = JSON.parse(localStorage.getItem("recentCity")) || [];
 var lastSearched = localStorage.getItem("cityName") || "";
 console.log(recentCity);
-//add event listener on button to retrieve city name
 
+//run function searchCity with the last searched city so the weather of that city is displayed on the dashboard
 searchCity(lastSearched);
 
+//function searchCity to run query using the last searched city into the function
 function searchCity (cityName) {
 
     //query for searching city using openweather map
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + cityName + "&appid=a4fafd35cdf4a780c554fb1a0788f97f";
-
+    
+    //ajax call
     $.ajax({
         url: queryURL,
         method: "GET",
@@ -23,23 +26,24 @@ function searchCity (cityName) {
         //history link for search
         function saveCity() {
 
+            //if cityName does not equal the last searched city && the city searched is not in the recentCity array, then store the cityName and the recentCity
             if (cityName !== recentCity[0] && !(recentCity.includes(cityName))) {
+                //add the new cityName to the beginning of the array
                 recentCity.unshift(cityName);
-
+                //store items in localstorage
                 localStorage.setItem("recentCity", JSON.stringify(recentCity));
                 localStorage.setItem("cityName", cityName);
             };
-
+            //to prevent a new list form creating
             $(".list-group").empty();
-
+            //for loop to dynamically create list
             for (i=0; i < recentCity.length; i++) {
                 var listCities = $('<a target="#" href="" class="list-group-item list-group-item-action">');
                 listCities.text(recentCity[i]);
                 $(".list-group").append(listCities);
             }
-
         };
-
+        //run function saveCity
         saveCity();
         
 
@@ -62,21 +66,20 @@ function searchCity (cityName) {
     });
 
 }
-
+//add event listener for the a tag with the searched city list
 $(document).on('click', ".list-group-item", function (event) {
     event.preventDefault();
-
+    //run searchCity function with the text on this a tag
     searchCity($(this).text());
 });
 
-
+//add event listener for the search button
 $("#searchBtn").on("click", function (event) {
     event.preventDefault();
-
+    //search the value of the input
     var city = $("#searchInput").val().trim();
-
+    //run searchCity function with that value
     searchCity(city);
-
 });
 
 
