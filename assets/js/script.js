@@ -5,6 +5,7 @@ console.log(recentCity);
 
 //run function searchCity with the last searched city so the weather of that city is displayed on the dashboard
 searchCity(lastSearched);
+getForecast(lastSearched);
 
 //function searchCity to run query using the last searched city into the function
 function searchCity (cityName) {
@@ -84,6 +85,18 @@ $("#searchBtn").on("click", function (event) {
 
 
 //function to get the forcast
+function getForecast() {
+    //queryURL for 5 day forecast
+    var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + lastSearched + "&appid=a4fafd35cdf4a780c554fb1a0788f97f";
+
+    $.ajax({
+        url: queryURL2,
+        method: "GET"
+    }).then(function (data) {
+        console.log(data);
+
+    })
+}
     //use a forloop to loop over all forcasts
 
 //function to get UV index
