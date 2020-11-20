@@ -23,7 +23,7 @@ function searchCity (cityName) {
         //history link for search
         function saveCity() {
 
-            if (cityName !== recentCity[0] || !(recentCity.includes(cityName))) {
+            if (cityName !== recentCity[0] && !(recentCity.includes(cityName))) {
                 recentCity.unshift(cityName);
 
                 localStorage.setItem("recentCity", JSON.stringify(recentCity));
