@@ -80,15 +80,23 @@ function searchCity (cityName) {
             }).then(function (uvindex) {
                 console.log(uvindex);
 
+                var uvVal = $("<p>").addClass("badge-pill badge").text("UV Index: " + parseFloat(uvindex.value));
+
+                cardBody.append(uvVal);
+
                 var uv = parseInt(uvindex.value);
 
                 if (uv > 5) {
-                    $("<p>").addClass("badge badge-pill badge-danger").text("UV Index: " + uv);
+                    uvVal.addClass("badge-pill badge-danger");
                 } else if (uv > 2) {
-                    $("<p>").addClass("badge badge-pill badge-warning").text("UV Index: " + uv); 
+                    uvVal.addClass("badge-pill badge-warning"); 
                 } else {
-                    $("<p>").addClass("badge badge-pill badge-success").text("UV Index: " + uv);
+                    uvVal.addClass("badge-pill badge-success");
                 }
+
+                
+
+
 
 
 
