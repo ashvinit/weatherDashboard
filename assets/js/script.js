@@ -51,12 +51,12 @@ function searchCity (cityName) {
         
 
         //convert Kelvin to degrees F
-        var convertK = (((parseInt(data.main.temp)) - 273.15) * (9/5) + 32);
+        var convertK = (((parseFloat(data.main.temp)) - 273.15) * (9/5) + 32);
 
         //created card to hold weather information
         var card = $("<div>").addClass("card");
         var cardBody =$("<div>").addClass("card-body");
-        var title = $("<h2>").addClass("card-title").text(data.name);
+        var title = $("<h2>").addClass("card-title").text(data.name + " (" + moment().format('L') + ")");
         var temp = $("<p>").addClass("card-text").text("Temperature: " + convertK.toFixed(2) + "℉");
         var humidity = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + "%");
         var windSpeed = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + "MPH");
@@ -66,7 +66,18 @@ function searchCity (cityName) {
         card.append(cardBody);
         $("#dashboard").append(card);
 
+        var latitude = parseFloat(data.coord.lat);
+        var longitude = parseFloat(data.coord.lon);
+        
+        function uVIndex () {
+            queryURL2 = "http://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=a4fafd35cdf4a780c554fb1a0788f97f"
+
+            
+        }
+
     });
+
+
 
 }
 //add event listener for the a tag with the searched city list
@@ -91,10 +102,10 @@ $("#searchBtn").on("click", function (event) {
 //function to get the forcast
 function getForecast(theCity) {
     //queryURL for 5 day forecast
-    var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + theCity + "&appid=a4fafd35cdf4a780c554fb1a0788f97f";
+    var queryURL3 = "https://api.openweathermap.org/data/2.5/forecast?q=" + theCity + "&appid=a4fafd35cdf4a780c554fb1a0788f97f";
 
     $.ajax({
-        url: queryURL2,
+        url: queryURL3,
         method: "GET"
     }).then(function (data) {
         console.log(data);
@@ -123,27 +134,9 @@ function getForecast(theCity) {
 
     }
 
-
     //run fivedayForecast
     fiveDayForecast();
-
-
-
-
-
-
-
-
-
 
     })
 }
 
-    
-
-    
-
-    
-    
-
-//function to get UV index
