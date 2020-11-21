@@ -7,6 +7,7 @@ console.log(recentCity);
 searchCity(lastSearched);
 getForecast(lastSearched);
 
+
 //function searchCity to run query using the last searched city into the function
 function searchCity (cityName) {
 
@@ -49,6 +50,7 @@ function searchCity (cityName) {
         //run function saveCity
         saveCity();
         
+        
 
         //convert Kelvin to degrees F
         var convertK = (((parseFloat(data.main.temp)) - 273.15) * (9/5) + 32);
@@ -69,11 +71,33 @@ function searchCity (cityName) {
         var latitude = parseFloat(data.coord.lat);
         var longitude = parseFloat(data.coord.lon);
         
-        function uVIndex () {
+        function uvIndex () {
             queryURL2 = "http://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=a4fafd35cdf4a780c554fb1a0788f97f"
 
-            
+            $.ajax({
+                url: queryURL2,
+                method: "GET"
+            }).then(function (uvindex) {
+                console.log(uvindex);
+
+                var uv = parseInt(uvindex.value);
+
+                if (uv > 5) {
+                    $("<p>").addClass("badge badge-pill badge-danger").text("UV Index: " + uv);
+                } else if (uv > 2) {
+                    $("<p>").addClass("badge badge-pill badge-warning").text("UV Index: " + uv); 
+                } else {
+                    $("<p>").addClass("badge badge-pill badge-success").text("UV Index: " + uv);
+                }
+
+
+
+                
+
+
+            })
         }
+        uvIndex();
 
     });
 
