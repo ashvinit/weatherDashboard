@@ -24,6 +24,7 @@ function searchCity (cityName) {
         //empty out the dashboard when a new search is made
         $("#dashboard").empty();
 
+
         //history link for search
         function saveCity() {
 
@@ -37,6 +38,7 @@ function searchCity (cityName) {
             };
             //to prevent a new list form creating
             $(".list-group").empty();
+            $("#forecast").empty();
             //for loop to dynamically create list
             for (i=0; i < recentCity.length; i++) {
                 var listCities = $('<a target="#" href="" class="list-group-item list-group-item-action">');
@@ -72,6 +74,7 @@ $(document).on('click', ".list-group-item", function (event) {
     event.preventDefault();
     //run searchCity function with the text on this a tag
     searchCity($(this).text());
+    getForecast($(this).text());
 });
 
 //add event listener for the search button
@@ -81,19 +84,21 @@ $("#searchBtn").on("click", function (event) {
     var city = $("#searchInput").val().trim();
     //run searchCity function with that value
     searchCity(city);
+    getForecast(city);
 });
 
 
 //function to get the forcast
-function getForecast() {
+function getForecast(theCity) {
     //queryURL for 5 day forecast
-    var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + lastSearched + "&appid=a4fafd35cdf4a780c554fb1a0788f97f";
+    var queryURL2 = "https://api.openweathermap.org/data/2.5/forecast?q=" + theCity + "&appid=a4fafd35cdf4a780c554fb1a0788f97f";
 
     $.ajax({
         url: queryURL2,
         method: "GET"
     }).then(function (data) {
         console.log(data);
+
         
         //function to loop through all the forecasts
         function fiveDayForecast() {
