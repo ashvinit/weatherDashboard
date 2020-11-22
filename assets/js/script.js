@@ -58,10 +58,17 @@ function searchCity (cityName) {
         //created card to hold weather information
         var card = $("<div>").addClass("card");
         var cardBody =$("<div>").addClass("card-body");
-        var title = $("<h2>").addClass("card-title").text(data.name + " (" + moment().format('L') + ")");
+        var title = $("<h2>").addClass("card-title").text(data.name + " (" + moment().format('L') + " ) " );
         var temp = $("<p>").addClass("card-text").text("Temperature: " + convertK.toFixed(2) + "℉");
         var humidity = $("<p>").addClass("card-text").text("Humidity: " + data.main.humidity + "%");
         var windSpeed = $("<p>").addClass("card-text").text("Wind Speed: " + data.wind.speed + "MPH");
+
+        //add image icon
+        var icon = data.weather[0].icon;
+        var img = $('<img src="" class="img-fluid" alt="Responsive image">')
+        img.attr("src", 'http://openweathermap.org/img/wn/' + icon + '@2x.png')
+
+        title.append(img);
 
         //append text to dashboard in html
         cardBody.append(title, temp, humidity, windSpeed);
@@ -72,7 +79,7 @@ function searchCity (cityName) {
         var longitude = parseFloat(data.coord.lon);
         
         function uvIndex () {
-            queryURL2 = "http://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=a4fafd35cdf4a780c554fb1a0788f97f"
+            queryURL2 = "https://api.openweathermap.org/data/2.5/uvi?lat=" + latitude + "&lon=" + longitude + "&appid=a4fafd35cdf4a780c554fb1a0788f97f"
 
             $.ajax({
                 url: queryURL2,
@@ -147,6 +154,13 @@ function getForecast(theCity) {
             var convertForecastK = (((parseInt(data.list[i].main.temp)) - 273.15) * (9/5) + 32);
             var temp2 = $("<p>").addClass("card-text").text("Temperature: " + convertForecastK.toFixed(2) + "℉");
             var humidity2 = $("<p>").addClass("card-text").text("Humidity: " + data.list[i].main.humidity + "%");
+
+            //add image icon
+            var icon2 = data.list[i].weather[0].icon;
+            var img2 = $('<img src="" class="img-fluid" alt="Responsive image">')
+            img2.attr("src", 'http://openweathermap.org/img/wn/' + icon2 + '@2x.png')
+
+            newDate.append(img2);
 
             cardBody2.append(newDate, temp2, humidity2);
             card2.append(cardBody2);
