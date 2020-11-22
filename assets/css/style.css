@@ -1,5 +1,9 @@
+*{
+    font-family: 'Nunito', sans-serif;
+}
+
 .jumbotron {
-    background-color: #606060;
+    background-color: #5F6366;
     color: white; 
     padding: 0;
     justify-content: center;
@@ -10,7 +14,7 @@ h1 {
 }
 
 #searchInput {
-    width: 200px;
+    width: 200vw;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 }
@@ -18,10 +22,44 @@ h1 {
 #searchBtn {
     height: 38px;
     width: 38px;
+    background-color: #EDB5BF;
 }
 
 .searchCities {
-    margin-left: 2%;
+    margin-left: 5%;
+    
 }
 
+body {
+    background-color: #4D6D9A;
+    color: white;
+}
+
+.card {
+    background-color: #EDB5BF;
+    width: 100%;
+    margin-right: 5%;
+}
+
+.five {
+    background-color:#EDB5BF;
+    margin-right: 1%;
+    margin-left: 1%;
+}
+
+a.list-group-item {
+    background-color: #99CED3;
+    color: #4D6D9A;
+}
+
+.form-inline {
+    width: 15vw;
+}
+
+#box2 {
+    background-color: #86B3D1;
+    width: 100%;
+    margin-right: 5%;
+    margin-top: 5%;
+}
 

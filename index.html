@@ -22,26 +22,36 @@
           <!-- Search Cities and City History -->
           <div class="col-3">
               <div class="searchCities">
-                <h5>Search for a City:</h5>
-                <div class="form-inline form-group">
-                    <input class="form-control" type="text" id="searchInput" placeholder="Enter a city...">
-                    <button type="button" class="btn btn-primary fas fa-search" id="searchBtn"></button> 
-                </div>
+                    <h5>Search for a City:</h5>
+                    <div class="form-inline form-group">
+                        <input class="form-control" type="text" id="searchInput" placeholder="Enter a city...">
+                        <button type="button" class="btn btn-primary fas fa-search" id="searchBtn"></button> 
+                    </div>
+                    <ul class="list-group"></ul>
               </div>
-              <ul class="list-group"></ul>
           </div>
 
           <!-- Weather display -->
           <div class="col-9">
-              <div class="row" id="dashboard">
+              <div class="row" id="dashboard"></div>
+              <div class="row">
+                <div class="card" id="box2">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h2>Five Day Forecast:</h2> 
+                        </div>
+                        <div class="card-text">
+                            <div class="row" id="forecast"></div>
+                        </div>
+                    </div>
+                    
                 
+                    
+                </div>
               </div>
-              <h2>Five Day Forecast:</h2> 
-              <div class="row" id="forecast">
-                
-              </div>
-
+            </div>
           </div>
+
       </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
