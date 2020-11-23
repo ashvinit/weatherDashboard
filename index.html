@@ -11,48 +11,45 @@
 <title>Weather Dashboard</title>
 </head>
 <body>
-
     <!-- jumbotron for heading -->
     <div class="jumbotron jumbotron-fluid">
-          <h1>Weather Dashboard</h1>
-      </div>
-
-      <!-- Weather Dashboard -->
-      <div class="row">
-          <!-- Search Cities and City History -->
-          <div class="col-3">
-              <div class="searchCities">
-                    <h5>Search for a City:</h5>
-                    <div class="form-inline form-group">
-                        <input class="form-control" type="text" id="searchInput" placeholder="Enter a city...">
-                        <button type="button" class="btn btn-primary fas fa-search" id="searchBtn"></button> 
-                    </div>
-                    <ul class="list-group"></ul>
-              </div>
-          </div>
-
-          <!-- Weather display -->
-          <div class="col-9">
-              <div class="row" id="dashboard"></div>
-              <div class="row">
+        <h1>Weather Dashboard</h1>
+    </div>
+    
+    <!-- Weather Dashboard -->
+    <div class="row">
+        <!-- Search Cities and City History -->
+        <div class="col-3">
+            <div class="searchCities">
+                <h5>Search for a City:</h5>
+                <div class="input-group">
+                    <input class="form-control" type="text" id="searchInput" placeholder="Enter a city...">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-secondary" id="searchBtn"><i class="fas fa-search"></i></button> 
+                    </div>   
+                </div>
+                <ul class="list-group"></ul>
+            </div>
+        </div>
+        
+        <!-- Weather display -->
+        <div class="col-9">
+            <div class="row" id="dashboard"></div>
+            <div class="row">
                 <div class="card" id="box2">
                     <div class="card-body">
                         <div class="card-title">
-                            <h2>Five Day Forecast:</h2> 
+                            <h2>Five Day Forecast:</h2>
                         </div>
                         <div class="card-text">
                             <div class="row" id="forecast"></div>
                         </div>
                     </div>
-                    
-                
-                    
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
+    </div>
 
-      </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>

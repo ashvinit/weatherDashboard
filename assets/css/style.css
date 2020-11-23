@@ -1,5 +1,6 @@
 *{
     font-family: 'Nunito', sans-serif;
+    color: #4D6D9A;
 }
 
 .jumbotron {
@@ -13,15 +14,7 @@ h1 {
     text-align: center;
 }
 
-#searchInput {
-    width: 200vw;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-}
-
 #searchBtn {
-    height: 38px;
-    width: 38px;
     background-color: #EDB5BF;
 }
 
@@ -39,7 +32,7 @@ body {
     background-color: #EDB5BF;
     width: 100%;
     margin-right: 5%;
-    margin-top: 5%;
+    margin-top: 3%;
 }
 
 .five {
@@ -51,16 +44,22 @@ body {
 a.list-group-item {
     background-color: #99CED3;
     color: #4D6D9A;
+
 }
 
-.form-inline {
+.input-group {
     width: 15vw;
+    margin-bottom: 5%;
 }
 
 #box2 {
     background-color: #86B3D1;
     width: 100%;
     margin-right: 5%;
-    margin-top: 5%;
+    margin-top: 3%;
+}
+
+#inputSearch {
+    margin-top: 1%;
 }
 
