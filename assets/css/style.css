@@ -1,6 +1,5 @@
 *{
     font-family: 'Nunito', sans-serif;
-    color: #4D6D9A;
 }
 
 .jumbotron {
@@ -61,5 +60,19 @@ a.list-group-item {
 
 #inputSearch {
     margin-top: 1%;
+}
+
+@media screen and (max-width: 800px) {
+
+    .five {
+        float: left;
+        max-width: 100%;
+    }
+
+    #forecast {
+        max-width: 100%;
+        grid-row: span;
+
+    }
 }
 

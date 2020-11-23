@@ -145,7 +145,7 @@ function getForecast(theCity) {
         //use a forloop to loop over all forecasts
         for (i = 0; i <= 32; i+=8) {
             
-            var card2 = $("<div>").addClass("card col-2 five");
+            var card2 = $("<div>").addClass("card col-sm-12 col-md-2 five");
             var cardBody2 =$("<div>").addClass("card-body");
             //retrieve date and change format of the date
             var date = data.list[i].dt_txt.substring(0, 10).split('-');
