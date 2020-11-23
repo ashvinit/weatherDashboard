@@ -22,19 +22,23 @@
         <div class=" col-sm-12 col-md-3">
             <div class="searchCities">
                 <h5>Search for a City:</h5>
+                <!-- input area and search button -->
                 <div class="input-group">
                     <input class="form-control" type="text" id="searchInput" placeholder="Enter a city...">
                     <div class="input-group-append">
                         <button type="button" class="btn btn-secondary" id="searchBtn"><i class="fas fa-search"></i></button> 
                     </div>   
                 </div>
+                <!-- dynamically append the search history to this list -->
                 <ul class="list-group"></ul>
             </div>
         </div>
         
         <!-- Weather display -->
         <div class="col-sm-12 col-md-9">
+            <!-- main dashboard -->
             <div class="row" id="dashboard"></div>
+            <!-- five day forecast -->
             <div class="row">
                 <div class="card" id="box2">
                     <div class="card-body">
@@ -42,6 +46,7 @@
                             <h2>Five Day Forecast:</h2>
                         </div>
                         <div class="card-text">
+                            <!-- dynamically append forecast cards here -->
                             <div class="row" id="forecast"></div>
                         </div>
                     </div>
