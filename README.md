@@ -1,6 +1,8 @@
 
 # Weather Dashboard 
 
+[View App](https://ashvinit.github.io/weatherDashboard/)
+
 
 ## Description
 
