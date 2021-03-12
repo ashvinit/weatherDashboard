@@ -1,6 +1,11 @@
-# weatherDashboard
 
-The Open Weather Map API was used to create this Weather Dashboard.
+# Weather Dashboard 
+
+
+## Description
+
+Used OpenWeather API to retrieve weather data for various cities. The user will be able to look up any city of their choice and view the five day weather forecast for that city. The cities that were previously searched will be saved using local storage.
+
 
 ![Main Page](assets/images/img1.png)
 
@@ -40,12 +45,18 @@ The Open Weather Map API was used to create this Weather Dashboard.
     * Moderate - ![moderate](assets/images/img13b.png)
     * High - ![high](assets/images/img13c.png)
 
-
-
 6. Last and final ajax call to create the five day forecast dynamically
 
 ![five day forecast](assets/images/img14.png)
 
 ![forecast](assets/images/img15.png)
+
+
+## Questions
+
+If you have any further questions regarding this project, please feel free to contact.
+
+GitHub Username: ashvinit
+Email Address: ashvinithomas@gmail.com
 
 
